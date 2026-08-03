@@ -1,0 +1,270 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Dexora Technologies — Centralized Single-File Theme System
+ * Enterprise dark palette: refined steel blue accents on deep charcoal surfaces.
+ * All design tokens live here — edit this file to re-theme the entire site.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-glow: var(--primary-glow);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-glow: var(--accent-glow);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-overlay-backdrop: var(--overlay-backdrop);
+  --color-chip-bg: var(--chip-bg);
+  --color-chip-border: var(--chip-border);
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Base — deep charcoal with a neutral-cool undertone */
+  --background: oklch(0.12 0.008 260);
+  --foreground: oklch(0.94 0.006 260);
+  --surface: oklch(0.16 0.010 260);
+  --surface-elevated: oklch(0.19 0.012 260);
+
+  --card: oklch(0.17 0.012 260 / 0.72);
+  --card-foreground: oklch(0.94 0.006 260);
+  --popover: oklch(0.16 0.010 260);
+  --popover-foreground: oklch(0.94 0.006 260);
+
+  /* Primary — refined steel blue */
+  --primary: oklch(0.62 0.07 245);
+  --primary-foreground: oklch(0.98 0.005 260);
+  --primary-glow: oklch(0.68 0.05 245);
+
+  /* Accent — muted slate-teal */
+  --accent: oklch(0.58 0.04 220);
+  --accent-foreground: oklch(0.94 0.006 260);
+  --accent-glow: oklch(0.64 0.035 220);
+
+  --secondary: oklch(0.22 0.012 260);
+  --secondary-foreground: oklch(0.94 0.006 260);
+  --muted: oklch(0.20 0.010 260);
+  --muted-foreground: oklch(0.68 0.015 260);
+
+  --destructive: oklch(0.58 0.18 25);
+  --destructive-foreground: oklch(0.98 0.005 260);
+
+  /* Borders & Inputs */
+  --border: oklch(1 0 0 / 0.07);
+  --border-strong: oklch(1 0 0 / 0.12);
+  --border-subtle: oklch(1 0 0 / 0.04);
+  --input: oklch(1 0 0 / 0.07);
+  --ring: oklch(0.62 0.07 245);
+
+  /* Overlays, Chips & Pattern Grids */
+  --overlay-backdrop: oklch(0.08 0.008 260 / 0.88);
+  --chip-bg: oklch(1 0 0 / 0.03);
+  --chip-border: oklch(1 0 0 / 0.06);
+  --pattern-grid: oklch(1 0 0 / 0.08);
+
+  /* Brand Gradients — subtle, low contrast */
+  --gradient-primary: linear-gradient(135deg, oklch(0.58 0.06 245), oklch(0.52 0.05 230));
+  --gradient-hero: radial-gradient(ellipse at 30% 0%, oklch(0.25 0.02 245 / 0.35), transparent 55%),
+                   radial-gradient(ellipse at 75% 20%, oklch(0.22 0.015 260 / 0.25), transparent 50%),
+                   radial-gradient(ellipse at 50% 100%, oklch(0.18 0.012 260 / 0.30), transparent 60%);
+  --gradient-border: linear-gradient(135deg, oklch(0.62 0.07 245 / 0.25), oklch(0.58 0.04 220 / 0.20));
+  --gradient-text: linear-gradient(135deg, oklch(0.96 0.005 260), oklch(0.78 0.02 245));
+  --gradient-body: radial-gradient(ellipse 70% 45% at 50% -5%, oklch(0.22 0.02 245 / 0.12), transparent),
+                   radial-gradient(ellipse 50% 35% at 85% 15%, oklch(0.20 0.015 260 / 0.08), transparent);
+
+  /* Card Border Gradients */
+  --gradient-card-border-default: linear-gradient(135deg, oklch(1 0 0 / 0.08), oklch(1 0 0 / 0.02));
+  --gradient-card-border-hover: linear-gradient(135deg, oklch(0.62 0.07 245 / 0.18), oklch(0.58 0.04 220 / 0.12));
+
+  /* Blog Visual Header Gradients — muted slate variations */
+  --gradient-blog-1: linear-gradient(135deg, oklch(0.22 0.02 245 / 0.45), oklch(0.18 0.015 260 / 0.35));
+  --gradient-blog-2: linear-gradient(135deg, oklch(0.20 0.018 230 / 0.45), oklch(0.17 0.012 260 / 0.35));
+  --gradient-blog-3: linear-gradient(135deg, oklch(0.21 0.015 210 / 0.40), oklch(0.18 0.012 245 / 0.35));
+  --gradient-blog-4: linear-gradient(135deg, oklch(0.20 0.012 260 / 0.45), oklch(0.17 0.010 240 / 0.35));
+  --gradient-blog-5: linear-gradient(135deg, oklch(0.19 0.014 250 / 0.40), oklch(0.16 0.010 260 / 0.35));
+
+  /* Shadows — elevation over glow */
+  --shadow-glow: 0 4px 24px -4px oklch(0 0 0 / 0.35);
+  --shadow-glow-accent: 0 8px 32px -8px oklch(0 0 0 / 0.45);
+  --shadow-elevated: 0 24px 64px -24px oklch(0 0 0 / 0.55);
+  --shadow-card: 0 4px 24px -8px oklch(0 0 0 / 0.40);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background-image: var(--gradient-body);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Glassmorphism & Surface Utilities */
+@utility glass {
+  background: color-mix(in oklab, var(--surface) 60%, transparent);
+  backdrop-filter: blur(20px) saturate(115%);
+  border: 1px solid var(--border);
+}
+
+@utility glass-strong {
+  background: color-mix(in oklab, var(--surface-elevated) 75%, transparent);
+  backdrop-filter: blur(24px) saturate(120%);
+  border: 1px solid var(--border-strong);
+}
+
+@utility glass-card-border {
+  background-image: var(--gradient-card-border-default);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  &:hover {
+    background-image: var(--gradient-card-border-hover);
+  }
+}
+
+@utility border-glass {
+  border-color: var(--border);
+}
+
+@utility border-glass-subtle {
+  border-color: var(--border-subtle);
+}
+
+@utility bg-overlay-backdrop {
+  background-color: var(--overlay-backdrop);
+}
+
+@utility bg-chip {
+  background-color: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+}
+
+/* Typography & Gradient Utilities */
+@utility text-gradient {
+  background: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-brand {
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+@utility bg-gradient-hero {
+  background: var(--gradient-hero);
+}
+
+@utility bg-gradient-blog-1 {
+  background-image: var(--gradient-blog-1);
+}
+@utility bg-gradient-blog-2 {
+  background-image: var(--gradient-blog-2);
+}
+@utility bg-gradient-blog-3 {
+  background-image: var(--gradient-blog-3);
+}
+@utility bg-gradient-blog-4 {
+  background-image: var(--gradient-blog-4);
+}
+@utility bg-gradient-blog-5 {
+  background-image: var(--gradient-blog-5);
+}
+
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+@utility shadow-glow-accent {
+  box-shadow: var(--shadow-glow-accent);
+}
+
+@utility shadow-elevated {
+  box-shadow: var(--shadow-elevated);
+}
+
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+@utility gradient-border {
+  position: relative;
+  background: var(--surface);
+  background-clip: padding-box;
+  border: 1px solid transparent;
+}
+@utility gradient-border-hover {
+  &:hover {
+    border-color: transparent;
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--primary) 35%, transparent),
+      var(--shadow-card);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+@utility animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.55; }
+}
+@utility animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
