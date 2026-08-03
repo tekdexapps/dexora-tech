@@ -1,29 +1,69 @@
-# Welcome to your Lovable project
+# Welcome to Dexora Technologies
 
-This project was built with [Lovable](https://lovable.dev).
+Official marketing website for **Dexora Technologies** — a technology solutions company focused on building intelligent, scalable, and future-ready digital products.
 
-## Build with Lovable
+## About the Project
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+This site showcases Dexora’s services, expertise, and company story. It is designed to help businesses learn how Dexora can support digital transformation through AI, cloud computing, automation, and enterprise software engineering.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+### Pages & Sections
 
-## Development
+- **Home** — Hero, services, solutions, about, tech stack, and contact
+- **Careers** — Open roles and opportunities to join the team
+- **Blog** — Insights on AI, cloud, and software development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+### Services Highlighted
+
+- Artificial Intelligence Solutions
+- Custom Software Development
+- Cloud Solutions
+- Data Engineering & Analytics
+- DevOps & Infrastructure
+- Workflow Automation
+
+## Getting Started
+
+You need [Node.js](https://nodejs.org/) and npm installed. Using [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) is recommended for managing Node versions.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+git clone <repository-url>
+cd dexora-tech
+npm install
 npm run dev
 ```
 
-## Built with
+The development server starts locally. Open the URL shown in your terminal to view the site.
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+## Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start the development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview the production build |
+| `npm run lint` | Run ESLint |
+| `npm run format` | Format code with Prettier |
+
+## Tech Stack
+
+- [TanStack Start](https://tanstack.com/start) — Full-stack React framework
+- [TypeScript](https://www.typescriptlang.org/) — Type-safe JavaScript
+- [React](https://react.dev/) — UI library
+- [Tailwind CSS](https://tailwindcss.com/) — Utility-first styling
+- [Framer Motion](https://www.framer.com/motion/) — Animations
+- [Radix UI](https://www.radix-ui.com/) — Accessible UI primitives
+
+## Project Structure
+
+```
+src/
+├── components/     # Reusable UI and page sections
+├── routes/         # TanStack Router pages (home, careers, blog)
+├── theme/          # Design tokens and shared styles
+├── lib/            # Utilities and helpers
+└── styles.css      # Global styles
+```
+
+## License
+
+This project is private and property to Dexora Technologies.
