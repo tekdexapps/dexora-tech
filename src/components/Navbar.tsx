@@ -1,22 +1,21 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "@tanstack/react-router";
 
 const links = [
   { href: "#home", label: "Home" },
   { href: "#services", label: "Services" },
-  { href: "#solutions", label: "Solutions" },
-  { href: "#about", label: "About" },
-  { href: "#industries", label: "Industries" },
-  { href: "#contact", label: "Contact" },
+  { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
   { href: "/careers", label: "Careers" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const location = useLocation();
   const isHome = location.pathname === "/";
 
@@ -27,23 +26,54 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!isHome) return;
+
+    const sectionIds = ["home", "services", "solutions", "contact"];
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 180;
+      
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
+        setActiveSection(sectionIds[sectionIds.length - 1]);
+        return;
+      }
+
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
+        if (el) {
+          const top = el.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveSection(sectionIds[i]);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isHome]);
+
+  const currentHash = activeSection;
+
   return (
     <motion.header
       initial={{ y: -30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "glass-strong shadow-elevated py-3"
-          : "bg-transparent py-5"
+        scrolled ? "glass-strong shadow-elevated py-3" : "bg-transparent py-5"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
-          <span className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-primary shadow-glow">
-            <Sparkles className="h-4 w-4 text-primary-foreground" />
-          </span>
-          <span className="text-lg font-semibold tracking-tight">
+        <Link to="/" className="flex items-center gap-0.5 group">
+          <img
+            src="/Dexora-Tech-logo-1.png"
+            alt="Dexora Technologies"
+            className="h-24 w-24 rounded-xl object-contain"
+          />
+          <span className="text-xl font-semibold tracking-tight">
             Dexora<span className="text-gradient-brand"> Technologies</span>
           </span>
         </Link>
@@ -51,8 +81,9 @@ export function Navbar() {
         <ul className="hidden lg:flex items-center gap-8">
           {links.map((l) => {
             const isHashLink = l.href.startsWith("#");
+            const targetHash = l.href.replace("#", "");
             const isActive = isHashLink
-              ? isHome && (location.hash === l.href.slice(1) || (l.href === "#home" && !location.hash))
+              ? isHome && currentHash === targetHash
               : location.pathname === l.href;
 
             if (isHashLink) {
@@ -61,6 +92,7 @@ export function Navbar() {
                 <li key={l.href}>
                   <a
                     href={href}
+                    onClick={() => setActiveSection(targetHash)}
                     className={`text-sm transition-colors relative after:absolute after:bottom-[-6px] after:left-0 after:h-px after:bg-gradient-primary hover:after:w-full after:transition-all ${
                       isActive
                         ? "text-foreground after:w-full"
@@ -93,6 +125,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href={isHome ? "#contact" : "/#contact"}
+            onClick={() => setActiveSection("contact")}
             className="hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium bg-gradient-primary text-primary-foreground shadow-glow hover:shadow-glow-accent transition-all hover:scale-[1.03]"
           >
             Get Started
@@ -116,8 +149,9 @@ export function Navbar() {
           <ul className="flex flex-col gap-1">
             {links.map((l) => {
               const isHashLink = l.href.startsWith("#");
+              const targetHash = l.href.replace("#", "");
               const isActive = isHashLink
-                ? isHome && (location.hash === l.href.slice(1) || (l.href === "#home" && !location.hash))
+                ? isHome && currentHash === targetHash
                 : location.pathname === l.href;
 
               if (isHashLink) {
@@ -126,7 +160,10 @@ export function Navbar() {
                   <li key={l.href}>
                     <a
                       href={href}
-                      onClick={() => setOpen(false)}
+                      onClick={() => {
+                        setActiveSection(targetHash);
+                        setOpen(false);
+                      }}
                       className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
                         isActive
                           ? "bg-primary/10 text-primary font-medium"

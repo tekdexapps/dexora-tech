@@ -28,15 +28,8 @@ export function Hero() {
       <div className="absolute bottom-1/4 -right-24 h-96 w-96 rounded-full bg-accent/20 blur-3xl animate-pulse-glow pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-6 md:px-10 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 rounded-full glass-strong px-4 py-1.5 text-xs text-muted-foreground mb-8"
-        >
-          <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-          AI · Cloud · Automation · Engineering
-        </motion.div>
+
+
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}

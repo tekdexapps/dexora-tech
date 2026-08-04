@@ -186,15 +186,7 @@ function BlogPage() {
         {/* Blog Hero Section */}
         <section className={styles.section}>
           <div className="text-center max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 rounded-full glass-strong px-4 py-1.5 text-xs text-muted-foreground mb-6"
-            >
-              <Sparkles className="h-3.5 w-3.5 text-primary" />
-              Dexora Knowledge Hub
-            </motion.div>
+
 
             <motion.h1
               initial={{ opacity: 0, y: 25 }}
@@ -245,11 +237,10 @@ function BlogPage() {
                   <button
                     key={cat}
                     onClick={() => setSelectedCategory(cat)}
-                    className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 cursor-pointer ${
-                      isSelected
-                        ? "bg-gradient-primary text-primary-foreground shadow-glow scale-[1.04]"
-                        : "glass text-muted-foreground hover:text-foreground hover:border-primary/40"
-                    }`}
+                    className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 cursor-pointer ${isSelected
+                      ? "bg-gradient-primary text-primary-foreground shadow-glow scale-[1.04]"
+                      : "glass text-muted-foreground hover:text-foreground hover:border-primary/40"
+                      }`}
                   >
                     {cat}
                   </button>

@@ -135,15 +135,8 @@ function CareersPage() {
         {/* Careers Hero Section */}
         <section className={styles.section}>
           <div className="text-center max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 rounded-full glass-strong px-4 py-1.5 text-xs text-muted-foreground mb-6"
-            >
-              <Sparkles className="h-3.5 w-3.5 text-primary" />
-              Careers at Dexora
-            </motion.div>
+
+
 
             <motion.h1
               initial={{ opacity: 0, y: 25 }}
